@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <ul>
+        <!-- 绑定key时，插入数据时，数据不会逐后移，而且原来的数据会先跟内存原先的位置绑定起来 -->
+        <li v-for='item in array' :key='item'>{{array}}</li>
+    </ul>
+    <ul>
+        <li v-for='(item,index) in array'>{{index}}.{{array}}</li>
+    </ul>
+    <ul>
+        <li v-for='item in object'>{{item}}</li>
+    </ul>
+    <ul>
+        <li v-for='(value,key) in object'>{{key}}-{{value}}</li>
+    </ul>
+    <ul>
+        <li v-for='(value,key,index) in object'>{{index}}-{{key}}-{{value}}</li>
+    </ul>
+</div>
+<script src=../js/vue.js></script>
+<script>
+     const app=new Vue({
+        el:'#app',
+        data:{
+            array:['A','B','C'],
+            object:{
+                name:'李京蔚',
+                age:22,
+                height:170
+            }
+        }
+    })
+</script>
+</body>
+</html>

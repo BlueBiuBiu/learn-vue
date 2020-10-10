@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <!-- {属性名:属性值} -->
+    <h2 :style="{fontSize: finalSize, backgroundColor: final2Color}">{{message}}</h2>
+    <h2 :style="{fontSize: finalSize2 + 'px', color: final2Color}">{{message}}</h2>
+</div>
+<script src=../js/vue.js></script>
+<script>
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            finalSize: '50px',
+            finalSize2: 50,
+            final2Color:'red'
+        }
+    })
+</script>
+</body>
+</html>

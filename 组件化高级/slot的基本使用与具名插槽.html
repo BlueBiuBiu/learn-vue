@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+     <!-- <cpn>我是插槽</cpn>
+     <cpn>我不是插槽</cpn>
+     <cpn name='slot1'>我是slot1插槽</cpn>
+     <cpn name='slot2'>我是slot2插槽</cpn> -->
+     <cpn></cpn>
+     <cpn>
+         <input slot='search' type="text" placeholder="京东">
+         <button slot='return'>返回首页</button>
+     </cpn>
+</div>
+<template id='cpn'>
+    <!-- <div>
+        <span>我是span</span>
+        <slot>嘻嘻嘻</slot>
+        <slot name='slot1'></slot>
+        <slot name='slot2'></slot>
+    </div> -->
+    <div>
+        <!-- 购物搜索栏 -->
+        <slot name='return'>
+            <button>返回</button>
+        </slot>
+        <slot name='search'>
+            <input placeholder="搜索内容">
+        </slot>
+        <slot name='hobbies'>
+            <select>
+                <option value="足球">足球</option>
+                <option value="篮球">篮球</option>
+                <option value="排球">排球</option>
+            </select>
+        </slot>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    const cpn={
+        template: '#cpn',
+    }
+        const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

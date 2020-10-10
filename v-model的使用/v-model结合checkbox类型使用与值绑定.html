@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <input type="checkbox" value='篮球' v-model='hobbies'>篮球
+    <input type="checkbox" value='足球' v-model='hobbies'>足球
+    <input type="checkbox" value='排球' v-model='hobbies'>排球
+    <h2>{{hobbies}}</h2>
+    <!-- 值绑定 -->
+    <label v-for='hobby in originHobbies' :for="hobby">
+        <input type="checkbox" :value='hobby' :id='hobby' v-model='hobbies'>{{hobby}}
+    </label>
+    <br>
+    <!-- 常见案例 只有同意协议才能按下一步-->
+    <label for="">
+        <input type="checkbox" id="agree" v-model='agree'>同意协议
+    </label>
+    <button :disabled='!agree'>下一步</button>
+</div>
+<script src=../js/vue.js></script>
+<script>
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message: '你好啊',
+            hobbies: [],
+            originHobbies: ['足球','篮球','排球','乒乓球','羽毛球'],
+            agree: false,
+        }
+    })
+</script>
+</body>
+</html>

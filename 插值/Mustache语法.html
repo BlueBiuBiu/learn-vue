@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        [v-cloak] {
+             display: none;
+        }
+    </style>
+</head>
+<body>
+    <div id='app' v-cloak>
+    <h2>{{message}}</h2>
+    <!-- 不解析 v-pre -->
+    <h2 v-pre>{{message}}</h2>
+    <!-- 显示message v-text-->
+    <h2 v-text="message"></h2>
+    <!-- 控制台改变内容，其保持不变 v-once-->
+    <h2 v-once>{{message}}</h2>
+    <h2>{{url}}</h2>
+    <!-- 显示链接 v-html-->
+    <h2 v-html='url'></h2>
+    <h2>{{message}},欢迎你</h2>
+    <!-- 拼接 -->
+    <h2>{{firstName+lastName}}</h2>
+    <h2>{{firstName+' '+lastName}}</h2>
+    <h2>{{firstName}} {{lastName}}</h2>
+</div>
+<script src=../js/vue.js></script>
+<script>
+    // 延迟一秒解析下面数据
+    setTimeout(function(){
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            firstName:'李',
+            lastName:'京蔚',
+            url:'<a href="http://www.baidu.com">百度一下</a>'
+        }
+    })},1000)
+</script>
+</body>
+</html>

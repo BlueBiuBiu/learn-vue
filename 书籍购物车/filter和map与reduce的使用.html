@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <div id='app'>
+        {{message}}
+    </div>
+    <script src=../js/vue.js></script>
+    <script>
+         const app=new Vue({
+            el:'#app',
+            data:{
+                message:'你好啊',
+            }
+        })
+        const nums = [10,20,50,70,130,90] 
+        //filter回调函数必须返回一个布尔值,
+        //当返回true时，函数内部就会将这次回调的n加入到新的数组中，为false,过滤掉
+        let nums2 = nums.filter(function(n){
+            return n<60
+        })
+        //
+        console.log(nums2);
+        let nums3 = nums2.map(function(n){
+            return n*2
+        })
+        console.log(nums3);//[20 40 100]
+        //reduce作用是对数据进行汇总
+        //pre 0 n 20
+        //pre 0+20 n 40
+        //pre 20+40 n 100
+        //pre 60 +100 n 0
+        //return 160
+        let total = nums3.reduce(function(preValue,n){
+            return preValue + n
+        },0)
+        console.log(total);
+        // 上面等价于下面的
+        let total1 = nums.filter(function(n){
+            return n<60
+        }).map(function(n){
+            return n*2
+        }).reduce(function(preValue,n){
+            return preValue + n
+        },0)
+        console.log(total1);
+        //等价于下面的
+        let total2 = nums.filter(n =>n<60).map(n => n*2).reduce((pre,n)=> pre + n)
+        console.log(total2);
+    </script>
+</body>
+</html>

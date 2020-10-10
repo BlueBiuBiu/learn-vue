@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <cpn @itemclick1='itemclick2'></cpn>
+</div>
+<template id='cpn'>
+    <div>
+        <button v-for='movie in movies' @click='itemclick(movie)'>{{movie}}</button>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    const cpn ={
+        template: '#cpn',
+        data(){
+            return{
+                movies:['海王','遥远的你','美丽的气球'],
+            }
+        },
+        methods: {
+            itemclick(movie){
+                this.$emit('itemclick1',movie)
+            }
+        },
+    }
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        },
+        components:{
+            cpn
+        },
+        methods:{
+            itemclick2(movie){
+                console.log('itemclick2',movie);
+                
+            }
+        }
+    })
+</script>
+</body>
+</html>

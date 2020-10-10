@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <cpn2></cpn2>
+</div>
+<script src=../js/vue.js></script>
+<script>
+    const cpnC1 = Vue.extend({
+    template:`
+        <div>
+            <h2>呵呵</h2>
+            <p>我是标题1</p>
+        </div>
+        `
+    })
+    const cpnC2 = Vue.extend({
+    template:`
+        <div>
+            <h2>哈哈</h2>
+            <p>我是标题2</p>
+            <cpn1></cpn1>
+        </div>
+        `,
+    //在组件二中注册组件一，并应用在自己的div中
+    components: {
+        cpn1: cpnC1
+    }
+    })
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        },
+        components: {
+            cpn2: cpnC2
+        } 
+    })
+</script>
+</body>
+</html>

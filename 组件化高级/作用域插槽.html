@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <cpn></cpn>
+    <cpn>
+        <template slot-scope='slot'>
+            <span v-for='movie in slot.abc'>{{movie}}-</span>
+        </template>
+    </cpn>
+    <cpn>
+        <template slot-scope='slot'>
+            <span >{{slot.abc.join('-')}}</span>
+        </template>
+    </cpn>
+</div>
+<template id='cpn'>
+    <div>
+        <slot :abc='movies'>
+            <ul v-for='movie in movies'>
+                <li>{{movie}}</li>
+            </ul>
+        </slot>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    const cpn={
+        template: '#cpn',
+        data(){
+            return{
+                movies: ['金','木','水','火','土'],
+            }
+        }
+    }
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message: '你好啊',
+        },
+        components:{
+            cpn
+        }
+    })
+</script>
+</body>
+</html>

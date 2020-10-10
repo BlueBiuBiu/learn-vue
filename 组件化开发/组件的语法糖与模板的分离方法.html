@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <cpn></cpn>
+    <cpn1></cpn1>
+</div>
+<template id='cpn1'>
+    <div>
+        <h2>{{title}}</h2>
+        <p>我是模板分离的内容</p>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    //组件的全局语法糖用法，直接把组件构造器里面的模板搬过来就可以了，局部的语法糖同理
+    Vue.component('cpn',{
+        template: `
+        <div>
+            <h2>我是主题</h2>
+            <p>我是全局组件的语法糖</p>
+        </div>
+            `
+    })
+    //模板的分离
+    Vue.component('cpn1',{
+        template: '#cpn1',
+        data() {
+            return{
+                 title: '我是data函数动态绑定模板的主题'
+            }
+        }
+    })
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+</body>
+</html>

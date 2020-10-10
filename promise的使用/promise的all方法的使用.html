@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<script>
+    //all方法后面是数组
+    Promise.all([
+        new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve('result1')
+            }, 1000);
+        }),
+        new Promise((resolve,reject) => {
+            setTimeout(() => {
+                resolve('result2')
+            }, 1000);
+        })
+    ]).then((result) => {
+        console.log(result[0])
+        console.log('------');
+        console.log(result[1])
+    })
+</script>
+</body>
+</html>

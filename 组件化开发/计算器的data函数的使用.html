@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <compute></compute>
+    <compute></compute>
+    <compute></compute>
+</div>
+<template id='compute'>
+    <div>
+    <h2>计算器: {{counter}}</h2>
+    <button @click='increment'>+</button>
+    <button @click='decrement' :disabled='counter< 1'>-</button>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    Vue.component('compute',{
+        template: '#compute',
+        methods: {
+            increment(){
+                return this.counter++;
+            },
+            decrement(){
+                return this.counter--;
+            },
+        },
+        data(){
+            return{
+                counter: 0,
+            }
+        }
+    })
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+</body>
+</html>

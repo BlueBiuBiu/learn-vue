@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        .active{
+            color:red;
+        }
+    </style>
+</head>
+<body>
+<div id='app'>
+    <!-- 语法糖写法,直接: -->
+    <h2 :class="active">{{message}}</h2>
+    <!-- 在下面还可以加普通的class，他会和动态绑定的class合并起作用 -->
+    <!-- <h2 :class="{active: isActive}">{{message}}</h2> -->
+    <!-- 类：布尔值 -->
+    <h2 :class="getclasses()">{{message}}</h2>
+    <!-- 数组 控制台查看差异,动态链接外部数据line不需要单引号-->
+    <!-- <h2 class='title' :class="['active', line]">{{message}}</h2> -->
+    <h2 class='title' :class="getclasses2()">{{message}}</h2>
+    <button v-on:click="btnClick">按钮</button>
+    <h2 v-html='url'>百度一下1</h2>
+    <a v-bind:href="aHref">百度一下</a>
+    <img v-bind:src="imgURL" alt="">
+</div>
+<script src="../js/vue.js"></script>
+<script>
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+            imgURL:'http://mvimg2.meitudata.com/56d943dfe0ffb7078.jpg',
+            aHref:'http://www.baidu.com',
+            url:'<a href="http://www.baidu.com">百度一下</a>',
+            active:'active',
+            isActive:true,
+            line:'dontailianjie'
+        },
+        methods: {
+                btnClick:function(){
+                    this.isActive = !this.isActive
+                },
+                getclasses:function(){
+                    return {active: this.isActive}
+                },
+                getclasses2:function(){
+                    return ['active', this.line]
+                }
+            }
+    })
+</script>
+</body>
+</html>
+

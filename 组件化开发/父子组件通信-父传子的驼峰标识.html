@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <!-- 驼峰标识，名字中间有大写时，在v-bind绑定时，需要用-进行连接才能使用 -->
+    <cpn :my-message-tuo-feng='message'></cpn>
+</div>
+<template id='cpn'>
+    <div>
+        <h2>{{myMessageTuoFeng}}</h2>
+    </div>
+</template>
+<script src=../js/vue.js></script>
+<script>
+    const cpn = {
+        template: '#cpn',
+        props:{
+            myMessageTuoFeng:{
+                type:String,
+                default:'默认值'
+            }
+        }
+    }
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'驼峰标识',
+        },
+        components:{
+            cpn
+        },
+    })
+</script>
+</body>
+</html>

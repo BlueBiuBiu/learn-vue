@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+<div id='app'>
+    <my-cpn></my-cpn>
+    <!-- 局部组件在这有效 -->
+    <cpn></cpn>
+</div>
+<div id='app2'>
+    <my-cpn></my-cpn>
+    <!-- 局部组件在这无效 -->
+    <cpn></cpn>
+</div>
+<script src=../js/vue.js></script>
+<script>
+    //17-26行代码为全局组件，可以在多个Vue实例下使用
+    const cpnC = Vue.extend({
+        template:`
+        <div>
+            <h2>呵呵</h2>
+            <p>我是标题1</p>
+        </div>
+        `
+    })
+    Vue.component('my-cpn',cpnC)
+     const app=new Vue({
+        el:'#app',
+        data:{
+            message:'你好啊',
+        },
+        //局部组件
+        components: {
+            //cpn为组件标签名，cpnC为组件构造器
+            cpn: cpnC
+        }
+    })
+    const app2=new Vue({
+        el:'#app2',
+        data:{
+            message:'你好啊',
+        }
+    })
+</script>
+</body>
+</html>
